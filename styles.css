@@ -248,7 +248,7 @@ section {
     padding: 2rem;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-left: 4px solid var(--dark-gray);
+    border: 1px solid var(--dark-gray);
 }
 
 .experience-card:hover {
@@ -284,6 +284,105 @@ section {
 }
 
 .experience-card p strong {
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
+/* Patents Section */
+.patents {
+    background-color: var(--light-gray);
+}
+
+.patents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.patent-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--accent-gray);
+}
+
+.patent-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.patent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.patent-header h3 {
+    color: var(--dark-gray);
+    font-size: 1.3rem;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+}
+
+.patent-number {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.patent-info {
+    margin-bottom: 1rem;
+}
+
+.patent-info p {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.patent-inventor,
+.patent-assignee {
+    font-size: 0.95rem;
+}
+
+.patent-dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.patent-dates span {
+    font-size: 0.9rem;
+}
+
+.patent-regions {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.patent-description {
+    color: var(--accent-gray);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    text-align: justify;
+    border-top: 1px solid var(--light-gray);
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.patent-info strong {
     color: var(--dark-gray);
     font-weight: 600;
 }
@@ -394,7 +493,7 @@ section {
 
 .contact-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     text-align: left;
 }
@@ -484,7 +583,8 @@ section {
     }
 
     .services-grid,
-    .experience-grid {
+    .experience-grid,
+    .patents-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
     }
