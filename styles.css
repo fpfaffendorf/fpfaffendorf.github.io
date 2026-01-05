@@ -940,7 +940,71 @@ section {
     height: 350px;
 }
 
+/* Article Hero Section */
+.article-hero {
+    background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
+    color: var(--white);
+    padding: 120px 0 80px;
+    margin-top: 60px;
+}
+
+.article-header {
+    text-align: center;
+}
+
+.article-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.article-date {
+    font-size: 1.1rem;
+    color: var(--light-gray);
+    font-style: italic;
+}
+
+/* Article Section */
+.article {
+    background-color: var(--white);
+    padding: 80px 0;
+}
+
+.article-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.article-content h2 {
+    font-size: 2rem;
+    color: var(--dark-gray);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    border-bottom: 3px solid var(--light-gray);
+    padding-bottom: 0.8rem;
+}
+
+.article-content h2:first-child {
+    margin-top: 0;
+}
+
+.article-content p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.8rem;
+    color: var(--medium-gray);
+    text-align: justify;
+}
+
+.article-content strong {
+    color: var(--dark-gray);
+    font-weight: 700;
+}
+
 /* Footer */
+
 .footer {
     background-color: var(--dark-gray);
     color: var(--light-gray);
