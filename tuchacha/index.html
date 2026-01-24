@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Cha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .button-container {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #tu-button {
+            background-color: #2d2d2d;
+            color: #00bfff;
+        }
+
+        #tu-button:active {
+            background-color: #3a3a3a;
+        }
+
+        #tu-button:hover {
+            background-color: #3a3a3a;
+        }
+
+        #cha-button {
+            background-color: #1a1a1a;
+            color: #ff006e;
+            border-top: 2px solid #333333;
+        }
+
+        #cha-button:active {
+            background-color: #262626;
+        }
+
+        #cha-button:hover {
+            background-color: #262626;
+        }
+
+        @media (max-width: 600px) {
+            .button-container {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .button-container {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="tu-button" class="button-container" aria-label="Reproducir TU">TU</button>
+    <button id="cha-button" class="button-container" aria-label="Reproducir CHA">CHA</button>
+
+    <audio id="tu-audio" preload="auto">
+        <source src="tu.wav" type="audio/wav">
+    </audio>
+    <audio id="cha-audio" preload="auto">
+        <source src="cha.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        // Service Worker para cachear los audios
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => {
+                console.log('Service Worker registration failed:', err);
+            });
+        }
+
+        // Elementos de audio
+        const tuAudio = document.getElementById('tu-audio');
+        const chaAudio = document.getElementById('cha-audio');
+        
+        // Botones
+        const tuButton = document.getElementById('tu-button');
+        const chaButton = document.getElementById('cha-button');
+
+        // Función para reproducir audio inmediatamente
+        function playAudio(audioElement) {
+            // Detener el audio actual
+            audioElement.currentTime = 0;
+            
+            // Reproducir
+            const playPromise = audioElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Error al reproducir audio:', error);
+                });
+            }
+        }
+
+        // Event listeners para los botones
+        tuButton.addEventListener('click', () => {
+            playAudio(tuAudio);
+        });
+
+        tuButton.addEventListener('touchstart', () => {
+            playAudio(tuAudio);
+        });
+
+        chaButton.addEventListener('click', () => {
+            playAudio(chaAudio);
+        });
+
+        chaButton.addEventListener('touchstart', () => {
+            playAudio(chaAudio);
+        });
+
+        // Prevenir comportamiento por defecto
+        tuButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            playAudio(tuAudio);
+        }, { passive: false });
+
+        chaButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            playAudio(chaAudio);
+        }, { passive: false });
+    </script>
+</body>
+</html>
