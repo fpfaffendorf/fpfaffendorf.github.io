@@ -150,6 +150,22 @@
             e.preventDefault();
             playAudio(chaAudio);
         }, { passive: false });
+
+        // Event listener para el teclado
+        document.addEventListener('keydown', (e) => {
+            const key = e.key.toUpperCase();
+            
+            if (key === 'T') {
+                playAudio(tuAudio);
+                tuButton.style.background = getComputedStyle(tuButton).backgroundColor;
+                tuButton.classList.add('active');
+                setTimeout(() => tuButton.classList.remove('active'), 100);
+            } else if (key === 'C') {
+                playAudio(chaAudio);
+                chaButton.classList.add('active');
+                setTimeout(() => chaButton.classList.remove('active'), 100);
+            }
+        });
     </script>
 </body>
 </html>
